@@ -6,6 +6,8 @@ on:
 jobs:
   demo:
     runs-on: ubuntu-latest
+    env:
+      BASEURL: "/ncmc.net-web-stats"
     steps:
       - uses: actions/checkout@v2
         with:
@@ -32,4 +34,3 @@ jobs:
           NETLIFY_AUTH_TOKEN: ${{ secrets.NETLIFY_AUTH_TOKEN }}
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_DEMO_SITE_ID }}
         timeout-minutes: 1
-        baseurl: "/ncmc.net-web-stats"
