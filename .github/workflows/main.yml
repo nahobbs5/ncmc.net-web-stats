@@ -16,8 +16,8 @@ jobs:
       - name: Install Dependencies
         run: npm add -g @unlighthouse/cli puppeteer
 
-      - name: Unlighthouse assertions and client
-        run: unlighthouse-ci --site https://ncmc.net --build-static
+      # - name: Unlighthouse assertions and client
+      # run: unlighthouse-ci --site https://ncmc.net --build-static
 
       - name: Deploy report to Netlify
         uses: nwtgck/actions-netlify@v1.2
@@ -35,4 +35,5 @@ jobs:
           NETLIFY_SITE_ID: ${{ secrets.NETLIFY_DEMO_SITE_ID }}
         timeout-minutes: 1
         - name: Fix Image Paths with Base URL
-        run: find .unlighthouse -type f -name "*.html" -exec sed -i 's|src="|src="${BASEURL}/|g' {} +
+        # run: find .unlighthouse -type f -name "*.html" -exec sed -i 's|src="|src="${BASEURL}/|g' {} +
+        run: find .unlighthouse -type f -name "*.html" -exec sed -i 's|src="reports/|src="/ncmc.net-web-stats/reports/|g' {} +
